@@ -12,3 +12,6 @@ author :
   github : nkershaw
   twitter : nil
   feedburner : nil
+
+# Production site
+production_url : https://noahkershaw.com
