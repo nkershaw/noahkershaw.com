@@ -1,2 +1,2 @@
 theme: jekyll-theme-minimal
-exclude: ['README.markdown', 'Gemfile.lock', 'Gemfile']
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile']
