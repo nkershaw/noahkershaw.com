@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Noah Kershaw 
 tagline: A work-in-progress website
 ---
