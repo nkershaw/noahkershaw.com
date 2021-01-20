@@ -1,2 +1,14 @@
+# Jekyll theme
 theme: jekyll-theme-minimal
+
+# Excluding some files
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile']
+
+# Theme variables
+title : noahkershaw.com
+author :
+  name : Noah Kershaw
+  email : noah.kershaw@hey.com
+  github : nkershaw
+  twitter : nil
+  feedburner : nil
