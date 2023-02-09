@@ -9,4 +9,4 @@ Some content...
 Index
 - [About Me](pages/about_me.html)
 - [Resources](pages/resources.html)
-- [Hackathon] (pages/hackathon.html)
+- [Hackathon](pages/hackathon.html)
