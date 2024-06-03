@@ -1,5 +1,6 @@
 ---
-layout: layout
-title: Home Page
+layout: layouts/home.njk
+title: Home
 ---
-# Welcome to My Site
+
+Content here will use the "home" layout template.

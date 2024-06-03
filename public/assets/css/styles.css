@@ -1,0 +1,55 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.header-section {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.intro-section {
+    background-color: #2196F3; /* Blue */
+    color: white;
+}
+
+.interests-section {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+.contact-section {
+    background-color: #FFEB3B; /* Yellow */
+    color: black;
+}
+
+footer {
+    background-color: #009688; /* Teal */
+    color: white;
+    padding: 20px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
