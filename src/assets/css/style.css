@@ -1,0 +1,40 @@
+:root {
+    --primary-color: #0055a5;
+    --secondary-color: #ffd700;
+    --font-primary: 'Helvetica', sans-serif;
+    --font-secondary: 'Times New Roman', serif;
+  }
+  
+  body {
+    font-family: var(--font-primary);
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header, footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1em;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+  a {
+    color: var(--secondary-color);
+    text-decoration: none;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  

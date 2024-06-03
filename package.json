@@ -1,0 +1,15 @@
+{
+  "name": "noahkershaw.com",
+  "version": "1.0.0",
+  "description": "You can use the [editor on GitHub](https://github.com/nkershaw/noahkershaw.com/edit/main/README.md) to maintain and preview the content for your website in Markdown files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}
