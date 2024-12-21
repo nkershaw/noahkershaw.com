@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noah Kershaw</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #2C3E50;
+            background: #F4F4F4;
+            line-height: 1.6;
+        }
+        .section {
+            padding: 80px 20px;
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero {
+            background: #1E90FF;
+            color: #fff;
+            padding: 100px 20px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin: 20px 0 0;
+        }
+        .about {
+            background: #FF7F50;
+            color: #fff;
+        }
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .achievements {
+            background: #FFD700;
+            color: #2C3E50;
+        }
+        .achievements h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .achievements ul {
+            list-style: none;
+            padding: 0;
+        }
+        .achievements li {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        .personal {
+            background: #98FB98;
+            color: #2C3E50;
+        }
+        .personal h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .personal p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        .personal ul {
+            list-style: none;
+            padding: 0;
+        }
+        .personal li {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        .contact {
+            background: #2E8B57;
+            color: #fff;
+        }
+        .contact h2 {
+            font-size: 2rem;
+        }
+        .contact a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero section">
+        <h1 style="font-size: 6rem; font-weight: bold; line-height: 1.2;">hey,<br>I'm Noah.</h1>
+    </section>
+
+    <section class="about section">
+        <h2>About Me</h2>
+        <p>I’m a product manager who thrives on creating impactful solutions and scaling global platforms. With over a decade of experience, I bring curiosity and creativity to everything I do. When I’m not collaborating with teams or solving complex challenges, you can find me exploring the outdoors, whether hiking scenic trails or finding inspiration in nature.</p>
+    </section>
+
+    <section class="achievements section">
+        <h2>Highlights</h2>
+        <ul>
+            <li><strong>Awards:</strong></li>
+            <ul>
+                <li>2023 MarTech Breakthrough: "Best Marketing Performance Management Solution"</li>
+                <li>2023 AdExchanger: "Best Commerce Media Technology"</li>
+            </ul>
+            <li><strong>Presentation:</strong> Featured speaker at AWS re:Invent 2023. <a href="https://www.youtube.com/watch?v=SlH4RmCB_qo" target="_blank">Watch the panel discussion</a>.</li>
+        </ul>
+    </section>
+
+    <section class="personal section">
+        <h2>What I'm Currently Into</h2>
+        <ul>
+            <li>📖 <strong>Last Read:</strong> "Jane Eyre" by Charlotte Brontë</li>
+            <li>🍳 <strong>Last Recipe:</strong> <a href="https://cooking.nytimes.com/recipes/1025953-one-pot-chicken-and-lentils" target="_blank">One-Pot Chicken and Lentils</a></li>
+            <li>🍷 <strong>Last Bottle Opened:</strong> 2018 Hope Well Pinot Noir</li>
+            <li>🥾 <strong>Last Great Hike:</strong> <a href="https://www.alltrails.com/trail/us/new-york/giant-ledge-and-panther-mountain-trail" target="_blank">Giant Ledge and Panther Mountain Trail</a></li>
+        </ul>
+    </section>
+
+    <section class="contact section">
+        <h2>Interested in talking?</h2>
+        <p>Here’s what I love: learning from smart, caring people, tackling hard problems, and exploring new ideas (indoors or out).</p>
+        <p>Email: <a href="mailto:noah.kershaw@gmail.com">noah.kershaw@gmail.com</a></p>
+        <p>Connect on <a href="https://linkedin.com/in/noahkershaw">LinkedIn</a>.</p>
+    </section>
+    <script>
+        // Easter egg for the game
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'g') {
+                alert('You found the hidden game! (Coming Soon)');
+            }
+        });
+    </script>
+</body>
+</html>
