@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noah Kershaw</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/custom.css"> <!-- Link to custom.css -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            color: #2C3E50;
-            background: #F4F4F4;
+            color: #FFFFFF; /* Unified text color */
+            background: #F8F9F9; /* Neutral page background */
             line-height: 1.6;
         }
         .section {
@@ -19,89 +20,41 @@
             text-align: left;
             max-width: 800px;
             margin: 0 auto;
-            animation: fadeIn 1.5s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         .hero {
-            background: #1E90FF;
-            color: #fff;
-            padding: 100px 20px;
+            background: #2C3E50; /* Deep navy */
         }
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 6rem;
+            font-weight: bold;
+            line-height: 1.2;
             margin: 0;
         }
-        .hero p {
-            font-size: 1.5rem;
-            margin: 20px 0 0;
-        }
         .about {
-            background: #FF7F50;
-            color: #fff;
-        }
-        .about h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            background: #AAB7B8; /* Muted sage */
         }
         .achievements {
-            background: #FFD700;
-            color: #2C3E50;
-        }
-        .achievements h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        .achievements ul {
-            list-style: none;
-            padding: 0;
-        }
-        .achievements li {
-            font-size: 1.2rem;
-            margin: 10px 0;
+            background: #D35400; /* Warm rust */
         }
         .personal {
-            background: #98FB98;
-            color: #2C3E50;
-        }
-        .personal h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        .personal p {
-            font-size: 1.2rem;
-            margin: 10px 0;
-        }
-        .personal ul {
-            list-style: none;
-            padding: 0;
-        }
-        .personal li {
-            font-size: 1.2rem;
-            margin: 10px 0;
+            background: #DCE4E0; /* Light sage */
         }
         .contact {
-            background: #2E8B57;
-            color: #fff;
+            background: #2C3E50; /* Deep navy */
         }
-        .contact h2 {
-            font-size: 2rem;
-        }
-        .contact a {
-            color: #FFD700;
+        a {
+            color: #FFD700; /* Warm gold for links */
             text-decoration: none;
             font-weight: bold;
         }
-        .contact a:hover {
+        a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <section class="hero section">
-        <h1 style="font-size: 6rem; font-weight: bold; line-height: 1.2;">hey,<br>I'm Noah.</h1>
+        <h1>hey,<br>I'm Noah.</h1>
     </section>
 
     <section class="about section">
@@ -137,13 +90,8 @@
         <p>Email: <a href="mailto:noah.kershaw@gmail.com">noah.kershaw@gmail.com</a></p>
         <p>Connect on <a href="https://linkedin.com/in/noahkershaw">LinkedIn</a>.</p>
     </section>
-    <script>
-        // Easter egg for the game
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'g') {
-                alert('You found the hidden game! (Coming Soon)');
-            }
-        });
-    </script>
+
+    <script src="assets/sail_game.js"></script>
+
 </body>
 </html>
