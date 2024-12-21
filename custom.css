@@ -1,0 +1,16 @@
+body {
+    background-color: #F8F9F9; /* Off-white background */
+    color: #4D5656; /* Charcoal text */
+}
+
+a {
+    color: #2C3E50; /* Deep navy links */
+}
+
+h1, h2, h3 {
+    color: #D35400; /* Warm rust headings */
+}
+
+nav {
+    background-color: #AAB7B8; /* Sage green navbar */
+}
