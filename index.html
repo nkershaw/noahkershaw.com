@@ -4,51 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noah Kershaw</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/custom.css"> <!-- Link to custom.css -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* Primary Colors */
+            --navy: #1B3A4B;         /* Deep, sophisticated navy */
+            --sage: #9BA17F;         /* Muted, natural sage */
+            --cream: #F5F1E9;        /* Warm, textural cream */
+            --rust: #C86E4C;         /* Rich, earthy rust */
+            
+            /* Accent Colors */
+            --gold: #D4B062;         /* Warm metallic accent */
+            --slate: #556F7A;        /* Refined blue-grey */
+            
+            /* Text Colors */
+            --text-dark: #2C353D;    /* Soft black for readability */
+            --text-light: #F5F1E9;   /* Warm white for contrast */
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            color: #FFFFFF; /* Unified text color */
-            background: #F8F9F9; /* Neutral page background */
+            color: var(--text-dark);
+            background: var(--cream);
             line-height: 1.6;
         }
+
         .section {
             padding: 80px 20px;
             text-align: left;
             max-width: 800px;
             margin: 0 auto;
         }
+
         .hero {
-            background: #2C3E50; /* Deep navy */
+            background: var(--navy);
+            color: var(--text-light);
         }
+
         .hero h1 {
             font-size: 6rem;
-            font-weight: bold;
+            font-weight: 700;
             line-height: 1.2;
             margin: 0;
+            letter-spacing: -0.02em;
         }
+
         .about {
-            background: #AAB7B8; /* Muted sage */
+            background: var(--sage);
+            color: var(--text-light);
         }
+
         .achievements {
-            background: #D35400; /* Warm rust */
+            background: var(--rust);
+            color: var(--text-light);
         }
+
         .personal {
-            background: #DCE4E0; /* Light sage */
+            background: var(--slate);
+            color: var(--text-light);
         }
+
         .contact {
-            background: #2C3E50; /* Deep navy */
+            background: var(--navy);
+            color: var(--text-light);
         }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
         a {
-            color: #FFD700; /* Warm gold for links */
+            color: var(--gold);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 500;
+            transition: all 0.2s ease;
         }
+
         a:hover {
             text-decoration: underline;
+            color: var(--cream);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 1rem;
+        }
+
+        .personal li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        strong {
+            font-weight: 500;
+        }
+
+        /* Subtle hover effects */
+        .section {
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: scale(1.002);
         }
     </style>
 </head>
@@ -59,7 +126,7 @@
 
     <section class="about section">
         <h2>About Me</h2>
-        <p>I’m a product manager who thrives on creating impactful solutions and scaling global platforms. With over a decade of experience, I bring curiosity and creativity to everything I do. When I’m not collaborating with teams or solving complex challenges, you can find me exploring the outdoors, whether hiking scenic trails or finding inspiration in nature.</p>
+        <p>I'm a product manager who thrives on creating impactful solutions and scaling global platforms. With over a decade of experience, I bring curiosity and creativity to everything I do. When I'm not collaborating with teams or solving complex challenges, you can find me exploring the outdoors, whether hiking scenic trails or finding inspiration in nature.</p>
     </section>
 
     <section class="achievements section">
@@ -86,12 +153,31 @@
 
     <section class="contact section">
         <h2>Interested in talking?</h2>
-        <p>Here’s what I love: learning from smart, caring people, tackling hard problems, and exploring new ideas (indoors or out).</p>
+        <p>Here's what I love: learning from smart, caring people, tackling hard problems, and exploring new ideas (indoors or out).</p>
         <p>Email: <a href="mailto:noah.kershaw@gmail.com">noah.kershaw@gmail.com</a></p>
         <p>Connect on <a href="https://linkedin.com/in/noahkershaw">LinkedIn</a>.</p>
     </section>
-
-    <script src="assets/sail_game.js"></script>
-
-</body>
+    
+    <!-- Remove debug div and load game script with correct relative path -->
+    <script>
+        window.addEventListener('load', () => {
+            console.log('Page loaded, initializing game...');
+        });
+    </script>
+        <script src="./assets/sail_game.js"></script>
+        <script>
+            let game;
+            window.addEventListener('load', () => {
+                console.log('Page loaded, initializing game...');
+                game = new SailingGame();
+                
+                document.addEventListener('keydown', (e) => {
+                    if (e.key.toLowerCase() === 'g') {
+                        console.log('G key pressed');
+                        game.start();
+                    }
+                });
+            });
+        </script>
+    </body>
 </html>
