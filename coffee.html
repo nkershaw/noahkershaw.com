@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>4:6 Method Coffee Calculator</title>
+  <style>
+    :root {
+      --primary: #8B5A2B;
+      --primary-light: #C8A27C;
+      --primary-dark: #5E3A1A;
+      --background: #FDFBF8;
+      --text: #2A2A2A;
+      --surface: #FFFFFF;
+      --border: #E0D8D0;
+      --accent: #D07E4E;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color: var(--text);
+      background: var(--background);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      color: var(--primary-dark);
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    
+    p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .card {
+      background: var(--surface);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    /* Controls styling */
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .input-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary-dark);
+    }
+    
+    input[type="number"] {
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 1rem;
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+    
+    input[type="number"]:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(139, 90, 43, 0.2);
+    }
+    
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 0.5rem;
+    }
+    
+    .radio-option {
+      position: relative;
+    }
+    
+    .radio-option input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .radio-option label {
+      display: block;
+      text-align: center;
+      padding: 0.75rem 0.5rem;
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 400;
+      font-size: 0.9rem;
+    }
+    
+    .radio-option input:checked + label {
+      background: var(--primary-light);
+      color: var(--surface);
+      border-color: var(--primary);
+    }
+    
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+    
+    th {
+      text-align: left;
+      padding: 1rem;
+      background: var(--primary-light);
+      color: var(--surface);
+      font-weight: 600;
+    }
+    
+    th:first-child {
+      border-top-left-radius: 8px;
+    }
+    
+    th:last-child {
+      border-top-right-radius: 8px;
+    }
+    
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
+    }
+    
+    /* Explanation section */
+    .explanation {
+      font-size: 0.95rem;
+      background: var(--primary-light);
+      color: var(--surface);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+    
+    .explanation h2 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: var(--primary-dark);
+    }
+
+    /* Alternate row colors for better readability */
+    tr:nth-child(even) {
+      background-color: rgba(200, 162, 124, 0.1);
+    }
+
+    /* Pour section headers */
+    tr.section-header td {
+      background-color: var(--primary-dark);
+      color: var(--surface);
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+    }
+
+    /* Total row */
+    tr.total-row td {
+      background-color: var(--primary);
+      color: var(--surface);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tetsu Kasuya 4:6 Method Calculator</h1>
+    <p>Enter your coffee amount and settings to get a personalized pour guide with timing information.</p>
+  </header>
+  
+  <div class="card">
+    <!-- Input Controls Section -->
+    <div class="controls">
+      <div class="input-group">
+        <label for="coffeeInput">Coffee (grams)</label>
+        <input type="number" id="coffeeInput" value="30" min="1" step="0.5" />
+      </div>
+
+      <div class="input-group">
+        <label for="ratioInput">Water Ratio (1:X)</label>
+        <input type="number" id="ratioInput" value="16.667" min="1" step="0.5" />
+      </div>
+    </div>
+
+    <!-- Taste balance options -->
+    <div class="input-group">
+      <label>Flavor Balance</label>
+      <div class="option-grid">
+        <div class="radio-option">
+          <input type="radio" id="tasteAcidic" name="taste" value="acidic" />
+          <label for="tasteAcidic">More Acidity</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="tasteBalanced" name="taste" value="balanced" checked />
+          <label for="tasteBalanced">Balanced</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="tasteSweeter" name="taste" value="sweeter" />
+          <label for="tasteSweeter">Sweeter</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strength options -->
+    <div class="input-group">
+      <label>Strength</label>
+      <div class="option-grid">
+        <div class="radio-option">
+          <input type="radio" id="strengthWeaker" name="strength" value="weaker" />
+          <label for="strengthWeaker">Weaker</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="strengthBalanced" name="strength" value="balanced" checked />
+          <label for="strengthBalanced">Balanced</label>
+        </div>
+        <div class="radio-option">
+          <input type="radio" id="strengthStronger" name="strength" value="stronger" />
+          <label for="strengthStronger">Stronger</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Results Table Section -->
+  <div class="card">
+    <table id="resultTable">
+      <!-- Table header -->
+      <thead>
+        <tr>
+          <th>Pour</th>
+          <th>Time</th>
+          <th>Amount (g)</th>
+          <th>Total (g)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Table content will be filled by JavaScript -->
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Brief explanation of the method -->
+  <div class="explanation">
+    <h2>About the 4:6 Method</h2>
+    <p>
+      Developed by World Brewers Cup Champion Tetsu Kasuya, this technique divides your brew into two phases:
+    </p>
+    <ul>
+      <li>The first 40% of water (divided into 2 pours) determines flavor balance</li>
+      <li>The remaining 60% (divided into 2-4 pours) controls strength</li>
+    </ul>
+    <p>
+      By adjusting the ratio between the first two pours, you can control acidity vs. sweetness. By changing the number of pours in the second phase, you can control the strength of your coffee.
+    </p>
+  </div>
+  
+  <footer>
+    © Noah Kershaw. Implementation of Tetsu Kasuya's 4:6 Method.
+  </footer>
+
+<script>
+// Select input elements and output fields
+const coffeeInput = document.getElementById('coffeeInput');
+const ratioInput = document.getElementById('ratioInput');
+const tasteOptions = document.getElementsByName('taste');
+const strengthOptions = document.getElementsByName('strength');
+const resultTable = document.getElementById('resultTable').getElementsByTagName('tbody')[0];
+
+function updateCalculator() {
+  // Get the input values
+  const coffee = parseFloat(coffeeInput.value) || 0;      // grams of coffee
+  const ratio = parseFloat(ratioInput.value) || 0;        // water ratio (e.g., 15 for 1:15)
+  
+  if (coffee <= 0 || ratio <= 0) return;
+  
+  // Determine which taste option is selected
+  let tasteValue;
+  for (const opt of tasteOptions) {
+    if (opt.checked) {
+      tasteValue = opt.value;
+      break;
+    }
+  }
+  
+  // Determine which strength option is selected
+  let strengthValue;
+  for (const opt of strengthOptions) {
+    if (opt.checked) {
+      strengthValue = opt.value;
+      break;
+    }
+  }
+  
+  // Calculate total water based on coffee and ratio
+  const totalWater = coffee * ratio;
+  const portion40 = 0.40 * totalWater;   // first 40% of water
+  const portion60 = 0.60 * totalWater;   // remaining 60% of water
+  
+  // Decide first and second pour volumes based on taste preference
+  let pour1, pour2;
+  if (tasteValue === 'sweeter') {
+    // Less water in first pour, more in second (emphasize sweetness)
+    pour1 = 0.4 * portion40;   // 40% of the 40% portion
+  } else if (tasteValue === 'acidic') {
+    // More water in first pour, less in second (emphasize acidity)
+    pour1 = 0.6 * portion40;   // 60% of the 40% portion
+  } else {
+    // Balanced: equal split
+    pour1 = 0.5 * portion40;
+  }
+  pour2 = portion40 - pour1;
+  
+  // Decide number of pours for the 60% portion based on strength preference
+  let finalPours;
+  if (strengthValue === 'weaker') {
+    // Weaker coffee -> more pours (smaller each)
+    finalPours = 4;
+  } else if (strengthValue === 'stronger') {
+    // Stronger coffee -> fewer pours (larger each)
+    finalPours = 2;
+  } else {
+    // Balanced strength
+    finalPours = 3;
+  }
+  
+  const pourSize60 = portion60 / finalPours;  // volume of each pour in 60% phase
+  
+  // Round values for display (to 1 decimal place)
+  const rPour1 = pour1.toFixed(1);
+  const rPour2 = pour2.toFixed(1);
+  const rPourSize60 = pourSize60.toFixed(1);
+  
+  // Add timing constants (in seconds)
+  const BLOOM_TIME = 45;
+  const POUR_INTERVAL = 45;
+  const FINAL_TIME = 210; // 3m30s
+  
+  // Clear the existing table rows
+  resultTable.innerHTML = '';
+  
+  // Add rows for the pours
+  // First section: 40% Portion (Flavor)
+  addSectionHeader('Flavor Phase (40%)');
+  
+  // Pour 1 (Bloom)
+  addPourRow('Pour 1', '0:00', rPour1, rPour1);
+  
+  // Pour 2 
+  const totalAfterPour2 = (parseFloat(rPour1) + parseFloat(rPour2)).toFixed(1);
+  addPourRow('Pour 2', '0:45', rPour2, totalAfterPour2);
+  
+  // Second section: 60% Portion (Strength)
+  addSectionHeader('Strength Phase (60%)');
+  
+  // Calculate pours 3 through 6 (depending on strength preference)
+  let runningTotal = parseFloat(totalAfterPour2);
+  let currentTime = BLOOM_TIME + POUR_INTERVAL;
+  
+  for (let i = 0; i < finalPours; i++) {
+    const pourNumber = i + 3;
+    runningTotal += parseFloat(rPourSize60);
+    addPourRow(
+      `Pour ${pourNumber}`, 
+      formatTime(currentTime), 
+      rPourSize60, 
+      runningTotal.toFixed(1)
+    );
+    currentTime += POUR_INTERVAL;
+  }
+  
+  // Add final step
+  addPourRow('Remove dripper', formatTime(FINAL_TIME), '-', runningTotal.toFixed(1));
+  
+  // Add total row
+  addTotalRow('Total', totalWater.toFixed(1));
+  
+  // Helper function to add a section header row to the table
+  function addSectionHeader(text) {
+    const row = resultTable.insertRow();
+    row.className = 'section-header';
+    const cell = row.insertCell(0);
+    cell.colSpan = 4; // Update colspan to 4 to account for new time column
+    cell.textContent = text;
+  }
+  
+  // Helper function to add a pour row to the table
+  function addPourRow(label, time, amount, total) {
+    const row = resultTable.insertRow();
+    const labelCell = row.insertCell(0);
+    const timeCell = row.insertCell(1);
+    const amountCell = row.insertCell(2);
+    const totalCell = row.insertCell(3);
+    
+    labelCell.textContent = label;
+    timeCell.textContent = time;
+    amountCell.textContent = amount;
+    totalCell.textContent = total;
+  }
+  
+  // Helper function to add the total row
+  function addTotalRow(label, amount) {
+    const row = resultTable.insertRow();
+    row.className = 'total-row';
+    const labelCell = row.insertCell(0);
+    const timeCell = row.insertCell(1);
+    const amountCell = row.insertCell(2);
+    const totalCell = row.insertCell(3);
+    
+    labelCell.textContent = label;
+    timeCell.textContent = formatTime(FINAL_TIME);
+    amountCell.textContent = amount;
+    totalCell.textContent = amount;
+  }
+}
+
+// Helper function to format time as M:SS
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+}
+
+// Attach event listeners to inputs to trigger update on any change
+coffeeInput.addEventListener('input', updateCalculator);
+ratioInput.addEventListener('input', updateCalculator);
+for (const opt of tasteOptions) {
+  opt.addEventListener('change', updateCalculator);
+}
+for (const opt of strengthOptions) {
+  opt.addEventListener('change', updateCalculator);
+}
+
+// Initialize the table on page load with default values
+updateCalculator();
+</script>
+</body>
+</html>
